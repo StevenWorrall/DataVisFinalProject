@@ -5,7 +5,7 @@ Final project for Data Vis class (CS 360).
 
 This project was created by Steven Worrall @stevenworrall and Daiya Masuda @dymzd
 
-[You can view the website here](stevenworrall.github.io/DataVisFinalProject).
+[You can view the website here](https://stevenworrall.github.io/DataVisFinalProject/).
 
 ## Some things we want to share in relation to this project:
 
