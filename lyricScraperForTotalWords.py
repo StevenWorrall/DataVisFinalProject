@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import os
 from nltk.corpus import stopwords
 import json
+import time
 
 wordCount = {}
 byYear = {}
@@ -51,6 +52,8 @@ def getSongs():
             lyrics = get_lyrics(artist, song)
             if lyrics is not None:
                 tempWordDict = makeSongDict(lyrics, tempWordDict)
+            time.sleep(1)
+            print(tempWordDict)
 
         newTempDict = {}
         for key in tempWordDict:
