@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 
 <html lang="en">
@@ -9,3 +10,58 @@
 	  <h1>Data Vis Project</h1>
 	</body>
 </html>
+
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="stylish.css"/>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<body>
+<div id="title">Population and Per Capita Income Change in the United States, 2011-2012</div>
+<div id="albumArt">
+  <div id="albumArt">
+    <div class="title">Select an Ablum Artwork</div>
+  </div>
+</div>
+<div id="streamGraphs">
+  <div id="streamGraphs">
+    <br>
+    <div class="title">Some Stream Graphs</div>
+  </div>
+</div>
+<script src="albumSele.js"></script>
+<script>
+-->
+<!DOCTYPE html>
+<style>
+
+
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<body>
+<script>
+
+var svg = d3.select("body")
+	.append("svg")
+	.attr("width", 1000)
+	.attr("height", 4000);
+	
+var data = [{x1: 1, x2: 50, y1: 1, y2: 50},
+{x1: 50, x2: 80, y1: 100, y2: 150}];
+// {x1: 200, x2: 400, y1: 10, y2: 100}];
+
+
+var rects = svg.selectAll("foo")
+	.data(data)
+	.enter()
+	.append("rect")
+	.attr("x", d=> d.x1)
+	.attr("y", d=> d.y1)
+	.attr("width", d=> d.x2 - d.x1)
+	.attr("height", d=> d.y2 - d.y1)
+	.attr("fill", "teal");
+
+</script>
+</body>

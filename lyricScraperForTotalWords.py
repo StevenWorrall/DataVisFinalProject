@@ -53,12 +53,12 @@ def getSongs():
             if lyrics is not None:
                 tempWordDict = makeSongDict(lyrics, tempWordDict)
             time.sleep(1)
-            print(tempWordDict)
 
         newTempDict = {}
         for key in tempWordDict:
             if tempWordDict[key] > 2:
                 newTempDict[key] = tempWordDict[key]
+        print(newTempDict)
         writeOut(newTempDict)
         # songDict[year.strip()] = newTempDict
 
@@ -72,12 +72,10 @@ def makeSongDict(lyrics, tempDict):
     for word in lyrics:
         word = re.sub(full_pattern, '', str(word))
         if word not in stop_words:
-            print(word)
             if word not in tempDict:
                 tempDict[word] = 0
             tempDict[word] += 1
 
-    print(tempDict)
     return tempDict
 
 
