@@ -1,3 +1,5 @@
+var svgs = [];
+
 for(var i = 0; i < 4; i++){
 	var start = "#albumCol";
 	var end = i.toString();
@@ -24,5 +26,13 @@ for(var i = 0; i < 4; i++){
 		.attr("width", d=> d.x2 - d.x1)
 		.attr("height", d=> d.y2 - d.y1)
 		.attr("fill", "teal");
-}
 	
+	svgs.push(rects);
+}
+
+svgs.forEach(function(rects,i){
+
+	rects.text("dick");
+	
+
+});
