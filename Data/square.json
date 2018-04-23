@@ -1,0 +1,19 @@
+[{"x1": 100, "x2": 300, "y1": 0, "y2": 200, "id": "gucciGang", "img": "albumArtwork/img.png"},
+{"x1": 303, "x2": 503, "y1": 0, "y2": 200, "id": 1, "img": "albumArtwork/img.png"},
+{"x1": 506, "x2": 706, "y1": 0, "y2": 200, "id": 2, "img": "albumArtwork/img.png"},
+{"x1": 709, "x2": 909, "y1": 0, "y2": 200, "id": 3, "img": "albumArtwork/img.png"},
+
+{"x1": 100, "x2": 300, "y1": 0, "y2": 200, "id": 4, "img": "albumArtwork/img.png"},
+{"x1": 303, "x2": 503, "y1": 0, "y2": 200, "id": 5, "img": "albumArtwork/img.png"},
+{"x1": 506, "x2": 706, "y1": 0, "y2": 200, "id": 6, "img": "albumArtwork/img.png"},
+{"x1": 709, "x2": 909, "y1": 0, "y2": 200, "id": 7, "img": "albumArtwork/img.png"},
+
+{"x1": 100, "x2": 300, "y1": 0, "y2": 200, "id": 8, "img": "albumArtwork/img.png"},
+{"x1": 303, "x2": 503, "y1": 0, "y2": 200, "id": 9, "img": "albumArtwork/img.png"},
+{"x1": 506, "x2": 706, "y1": 0, "y2": 200, "id": 10, "img": "albumArtwork/img.png"},
+{"x1": 709, "x2": 909, "y1": 0, "y2": 200, "id": 11, "img": "albumArtwork/img.png"},
+
+{"x1": 100, "x2": 300, "y1": 0, "y2": 200, "id": 12, "img": "albumArtwork/img.png"},
+{"x1": 303, "x2": 503, "y1": 0, "y2": 200, "id": 13, "img": "albumArtwork/img.png"},
+{"x1": 506, "x2": 706, "y1": 0, "y2": 200, "id": 14, "img": "albumArtwork/img.png"},
+{"x1": 709, "x2": 909, "y1": 0, "y2": 200, "id": 15, "img": "albumArtwork/img.png"}]
