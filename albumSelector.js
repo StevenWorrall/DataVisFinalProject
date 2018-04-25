@@ -10,7 +10,6 @@ for(var i = 0; i < 3; i++){
 	var end = i.toString();
 	// var end = end.concat("\"");
 	var divPath = start.concat(end);
-	console.log(divPath);
 	var svg = d3.select(divPath)
 		.append("svg")
 		.attr("width", 1000)

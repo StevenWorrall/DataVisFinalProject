@@ -1,7 +1,7 @@
 body {
-    width: 1000px;
-    margin: auto;
-    margin-top: 20px;
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
 }
 
 div.title {
@@ -12,8 +12,9 @@ div.title {
 
 div.subHeader {
   text-align: center;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 400;
+  margin-top: 40px;
 }
 
 p.startingPara {
@@ -27,6 +28,22 @@ div.albumCol0Hidden {
   margin: auto;
 }
 
+div.streamGraphs {
+  margin: auto;
+}
+
 div.hidden {
     display: none;
+}
+
+div.toolTip {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 30px; 
+}
+
+div.streamSelector {
+  padding-bottom: 200px;
 }
