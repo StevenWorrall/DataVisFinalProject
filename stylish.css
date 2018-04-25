@@ -23,6 +23,9 @@ p.startingPara {
   padding-bottom: 20px;
 }
 
+div.albumCol0Hidden {
+  margin: auto;
+}
 
 div.hidden {
     display: none;
