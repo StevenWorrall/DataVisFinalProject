@@ -89,12 +89,13 @@ var x = d3.scaleTime()
     .range([50, 800]);
 
 // setup axis
-var xAxis = d3.axisLeft(x);
+// var xAxis = d3.axisLeft(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
     .range([333, -300]);
-  
+var yAxis = d3.axisBottom(y);
+
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
 
@@ -125,10 +126,14 @@ svg.selectAll("path")
          d3.select("#major").text("Mouse over");
 })
 
+// svg.append("g")
+//             .attr("class", "axis axis--x")
+//             .attr("transform", "translate(" + (width) + ")",0)
+//             .call(xAxis);  
 svg.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(" + (width) + ")",0)
-            .call(xAxis);  
+            .attr("class", "axis axis--y")
+            .attr("transform", 0, "translate(" + (height) + ")")
+            .call(yAxis);  
 }
 function buildStreamGraph2(trddata) {
 var data = trddata;
@@ -148,12 +153,14 @@ var x = d3.scaleTime()
     .range([50, 800]);
 
 // setup axis
-var xAxis = d3.axisBottom(x);
+var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
     .range([400, 300]);
-  
+	
+var yAxis = d3.axisBottom(y);
+
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
 
@@ -186,8 +193,12 @@ svg.selectAll("path")
 
 svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (height) + ")")
+            .attr("transform", "translate(" + (width) + ")",0)
             .call(xAxis);  
+svg.append("g")
+            .attr("class", "axis axis--y")
+            .attr("transform", 0, "translate(" + (height) + ")")
+            .call(yAxis);  
 }
 // start on the selection grid
 
