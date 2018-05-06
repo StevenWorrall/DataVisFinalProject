@@ -153,13 +153,13 @@ var x = d3.scaleTime()
     .range([50, 800]);
 
 // setup axis
-var xAxis = d3.axisLeft(x);
+var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
     .range([400, 300]);
 	
-var yAxis = d3.axisTop(y);
+var yAxis = d3.axisBottom(y);
 
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
