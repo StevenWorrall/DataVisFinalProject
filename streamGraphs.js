@@ -193,7 +193,7 @@ svg.selectAll("path")
 
 svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(" + (width) + ")",0)
+            .attr("transform", 100,0)
             .call(xAxis);  
 svg.append("g")
             .attr("class", "axis axis--y")
