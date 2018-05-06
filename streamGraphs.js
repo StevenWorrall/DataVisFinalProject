@@ -130,10 +130,10 @@ svg.selectAll("path")
 //             .attr("class", "axis axis--x")
 //             .attr("transform", "translate(" + (width) + ")",0)
 //             .call(xAxis);  
-svg.append("g")
-            .attr("class", "axis axis--y")
-            .attr("transform", 0, "translate(" + (height) + ")")
-            .call(yAxis);  
+// svg.append("g")
+//             .attr("class", "axis axis--y")
+//             .attr("transform", 0, "translate(" + (height) + ")")
+//             .call(yAxis);  
 }
 function buildStreamGraph2(trddata) {
 var data = trddata;
@@ -195,10 +195,10 @@ svg.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", 150, 100)
             .call(xAxis);  
-svg.append("g")
-            .attr("class", "axis axis--y")
-            .attr("transform", 0, "translate(" + (height) + ")")
-            .call(yAxis);  
+// svg.append("g")
+//             .attr("class", "axis axis--y")
+//             .attr("transform", 0, "translate(" + (height) + ")")
+//             .call(yAxis);  
 }
 // start on the selection grid
 
