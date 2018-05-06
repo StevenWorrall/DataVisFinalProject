@@ -181,7 +181,7 @@ svg.selectAll("path")
     .on('mouseout', function(d){      
       d3.select(this).style('fill', 
          d3.rgb( d3.select(this).style("fill") ).darker());
-         d3.select("#major").text("Mouse over");
+         d3.select("#major").text("KEYWORD (Hover over the graph) ");
 })
 
 svg.append("g")
