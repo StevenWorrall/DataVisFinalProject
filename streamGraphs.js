@@ -7,7 +7,7 @@ var parseYear = d3.timeParse("%Y-%m");
 var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 
-d3.csv('demo.csv', function(err, d){
+d3.csv('/Data/demo.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -39,7 +39,7 @@ d3.csv('demo.csv', function(err, d){
   
 })
 
-d3.csv('gucci.csv', function(err, d){
+d3.csv('/trendScore/gucci.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
