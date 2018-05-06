@@ -89,7 +89,7 @@ var x = d3.scaleTime()
     .range([50, 800]);
 
 // setup axis
-var xAxis = d3.axisBottom(x);
+var xAxis = d3.axisLeft(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
@@ -127,7 +127,7 @@ svg.selectAll("path")
 
 svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (height) + ")")
+            .attr("transform", "translate(" + (width) + ")",0)
             .call(xAxis);  
 }
 function buildStreamGraph2(trddata) {
