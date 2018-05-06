@@ -94,7 +94,7 @@ var x = d3.scaleTime()
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
     .range([333, -300]);
-var yAxis = d3.axisTop(y);
+var yAxis = d3.axisBottom(y);
 
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
