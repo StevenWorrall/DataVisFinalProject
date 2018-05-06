@@ -152,7 +152,7 @@ var xAxis = d3.axisBottom(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([0, -100]);
+    .range([400, 300]);
   
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
