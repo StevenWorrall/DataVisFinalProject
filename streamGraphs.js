@@ -7,7 +7,7 @@ var parseYear = d3.timeParse("%Y-%m");
 var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 
-d3.csv('Data/demo.csv', function(err, d){
+d3.csv('demo.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -16,7 +16,7 @@ d3.csv('Data/demo.csv', function(err, d){
 		.key(function(d) { return d.year; })
 		.entries(d);
   
-//   console.log(nested_data);
+  console.log(nested_data);
   
   var trddata = nested_data.map(function(d){
     var obj = {
@@ -39,6 +39,38 @@ d3.csv('Data/demo.csv', function(err, d){
   
 })
 
+d3.csv('gucci.csv', function(err, d){
+  if(err) console.log(err);
+  
+  //console.log(d)
+  
+  var nested_data = d3.nest()
+		.key(function(d) { return d.Year; })
+		.entries(d);
+  
+  console.log(nested_data);
+  
+  var trddata2 = nested_data.map(function(d){
+    var obj = {
+      month: new Date(d.key)
+    }
+    
+    d.values.forEach(function(v){
+      obj[v.Keyword] = +v.Popularity;
+      
+        if(!keyarray.includes(d.Keyword)){
+        keyarray.push(d.Keyword);
+
+      }
+    })
+//     console.log(obj)
+    return obj;
+  })
+//   console.log(trddata)
+  buildStreamGraph2(trddata2);
+  
+})
+
 function buildStreamGraph(trddata) {
 var data = trddata;
 
@@ -49,19 +81,19 @@ var stack = d3.stack()
 
 var series = stack(data);
 
-var width = 800,
+var width = 400,
     height = 1000;
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
-    .range([10, width]);
+    .range([50, 800]);
 
 // setup axis
 var xAxis = d3.axisBottom(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([height/2, -200]);
+    .range([333, -300]);
   
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
@@ -98,7 +130,65 @@ svg.append("g")
             .attr("transform", "translate(0," + (height) + ")")
             .call(xAxis);  
 }
+function buildStreamGraph2(trddata) {
+var data = trddata;
 
+var stack = d3.stack()
+    .keys(["Gucci"])
+    .order(d3.stackOrderNone)
+    .offset(d3.stackOffsetWiggle);
+
+var series = stack(data);
+
+var width = 400,
+    height = 1000;
+
+var x = d3.scaleTime()
+    .domain(d3.extent(data, function(d){ return d.month; }))
+    .range([50, 800]);
+
+// setup axis
+var xAxis = d3.axisBottom(x);
+
+var y = d3.scaleLinear()
+    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
+    .range([200, 100]);
+  
+var color = d3.scaleLinear()
+    .range(["#51D0D7", "#31B5BB"]);
+
+var color = d3.interpolateCool;
+
+var area = d3.area()
+    .y(function(d) { return x(d.data.month); })
+    .x0(function(d) { return y(d[0]); })
+    .x1(function(d) { return y(d[1]); })
+    .curve(d3.curveBasis);
+
+var svg = d3.select("#streamGraphs").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.selectAll("path")
+    .data(series)
+    .enter().append("path")
+    .attr("d", area)
+    .style("fill", function() { return color(Math.random()); })
+    .on('mouseover', function(d){      
+      d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
+  		d3.select("#major").text(d.key);
+    })
+    .on('mouseout', function(d){      
+      d3.select(this).style('fill', 
+         d3.rgb( d3.select(this).style("fill") ).darker());
+         d3.select("#major").text("Mouse over");
+})
+
+svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", "translate(0," + (height) + ")")
+            .call(xAxis);  
+}
 // start on the selection grid
 
 function gridData() {
