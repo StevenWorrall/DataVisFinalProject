@@ -39,7 +39,7 @@ d3.csv('Data/demo.csv', function(err, d){
   
 })
 
-d3.csv('trendScore/gucci.csv', function(err, d){
+d3.csv('trendScore/Gucci.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
