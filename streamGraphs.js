@@ -82,7 +82,7 @@ var stack = d3.stack()
 var series = stack(data);
 
 var width = 500,
-    height = 1000;
+    height = 800;
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
@@ -93,7 +93,7 @@ var x = d3.scaleTime()
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([333, -300]);
+    .range([360, -300]);
 var yAxis = d3.axisBottom(y);
 
 var color = d3.scaleLinear()
@@ -146,7 +146,7 @@ var stack = d3.stack()
 var series = stack(data);
 
 var width = 500,
-    height = 1000;
+    height = 800;
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
@@ -157,7 +157,7 @@ var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([400, 300]);
+    .range([350, 250]);
 	
 var yAxis = d3.axisBottom(y);
 
