@@ -48,6 +48,8 @@ select.on("change", function() {
 		})
 		return obj;
 		})
+	d3.select("TrendGraph").remove();
+	buildStreamGraph(trddata2);
 	d3.select("#initial").remove();
 	buildStreamGraph2(trddata2);
 	})	
@@ -155,6 +157,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
+    .attr("class", "TrendGraph")
     .style("fill", function() { return color(Math.random()); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
