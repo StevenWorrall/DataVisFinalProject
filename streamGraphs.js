@@ -170,7 +170,7 @@ var x = d3.scaleTime()
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[12] + d[13];}); })])
     .range([360, -270]);
-	console.log(d)
+// 	console.log(d)
   
 // setup axis
 var xAxis = d3.axisRight(x);
