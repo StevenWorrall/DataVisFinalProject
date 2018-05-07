@@ -48,7 +48,14 @@ select.on("change", function() {
 		})
 		return obj;
 		})
+// 	d3.select("svg").remove();
+// 	svg.selectAll("*").remove();
+	d3.select("#TrendGraph").remove();
+	d3.select("#TrendGraph").remove();
 	d3.select("#initial").remove();
+	d3.select("#initial").remove();
+
+	buildStreamGraph2(trddata2);
 	buildStreamGraph2(trddata2);
 	})	
 })
@@ -81,34 +88,11 @@ d3.csv('Data/demo.csv', function(err, d){
     return obj;
   })
 //   console.log(trddata)
+  //Trend data
   buildStreamGraph(trddata);
-  
-})
+	//word count data
+  buildStreamGraph(trddata);
 
-d3.csv('trendScore/'+processed+'.csv', function(err, d){
-	if(err) console.log(err);
-	//console.log(d)
-	var nested_data = d3.nest()
-		.key(function(d) { return d.Year; })
-		.entries(d);
-
-	console.log(nested_data);
-
-	var trddata2 = nested_data.map(function(d){
-	var obj = {
-	    month: new Date(d.key)
-	 }
-	d.values.forEach(function(v){
-		obj[v.Keyword] = +v.Popularity;
-
-		if(!keyarray.includes(d.Keyword)){
-		keyarray.push(d.Keyword);
-
-	      }
-	 })
-		return obj;
-	})
-	buildStreamGraph2(trddata2);
 })
 
 function buildStreamGraph(trddata) {
@@ -126,15 +110,14 @@ var width = 500,
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
-    .range([25,825]);
-
-// setup axis
-// var xAxis = d3.axisLeft(x);
-
+    .range([25, 825]);
+	
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([360, -300]);
-var yAxis = d3.axisBottom(y);
+    .range([360, -270]);
+  
+// setup axis
+var xAxis = d3.axisRight(x);
 
 var color = d3.scaleLinear()
     .range(["#51D0D7", "#31B5BB"]);
@@ -148,6 +131,7 @@ var area = d3.area()
     .curve(d3.curveBasis);
 
 var svg = d3.select("#streamGraphs").append("svg")
+    .attr("id", "TrendGraph")
     .attr("width", width)
     .attr("height", height);
 
@@ -165,6 +149,10 @@ svg.selectAll("path")
          d3.rgb( d3.select(this).style("fill") ).darker());
          d3.select("#major").text("Mouse over");
 })
+svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", 150, 100)
+            .call(xAxis);
 
 // svg.append("g")
 //             .attr("class", "axis axis--x")
@@ -287,7 +275,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .attr("class", "initialGraph")
+    .attr("id", "initialGraph")
     .style("fill", function() { return color(Math.random()); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
