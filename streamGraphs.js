@@ -48,7 +48,7 @@ select.on("change", function() {
 		})
 		return obj;
 		})
-	d3.select("initial").remove();
+	d3.select("#initial").remove();
 	buildStreamGraph2(trddata2);
 	})	
 })
