@@ -48,7 +48,8 @@ select.on("change", function() {
 		})
 		return obj;
 		})
-	d3.select("svg").remove();
+// 	d3.select("svg").remove();
+	svg.selectAll("*").remove();
 	buildStreamGraph2(trddata2);
 // 	d3.select("#initial").remove();
 	buildStreamGraph2(trddata2);
