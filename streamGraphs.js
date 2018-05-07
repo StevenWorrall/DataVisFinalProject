@@ -240,8 +240,8 @@ console.log(gridData);
 
 var grid = d3.select("#streamSelector")
   .append("svg")
-  .attr("width",600)
-  .attr("height",450);
+  .attr("width",610)
+  .attr("height",460);
   
 var row = grid.selectAll(".row")
   .data(gridData)
