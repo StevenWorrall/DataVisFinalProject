@@ -46,6 +46,13 @@ div.toolTip {
   margin-top: 20px;
   margin-bottom: 30px; 
 }
+div.title1{
+  left: 250px;
+  
+}
+div.title2{
+  right: 250px;
+}
 
 div.streamSelector {
   padding-bottom: 200px;
