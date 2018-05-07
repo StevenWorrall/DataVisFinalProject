@@ -47,15 +47,15 @@ div.toolTip {
   margin-bottom: 30px; 
 }
 div.title1{
-    left: 480px;
-    position: absolute;
-    top: 1140px;
+    left: 240px;
+    position: relative;
+    top: 100px;
   
 }
 div.title2{
-    right: 480px;
-    position: absolute;
-    top: 1140px;
+    left: 750px;
+    position: relative;
+    top: 80px;
 }
 
 div.streamSelector {
