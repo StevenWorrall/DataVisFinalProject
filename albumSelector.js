@@ -55,8 +55,7 @@ for(var i = 0; i < 3; i++){
 		.attr("height", d=> d.y2 - d.y1)
 		.attr("fill", function(d, j) { var p = (k-4)+j; return "url(#"+p+")"; })
 		.on("click", function(){
-			lineGraph();
-			console.log("hi")
+			lineGraph("hi");
 		});
 	
 	svgs.push(rects);
@@ -66,7 +65,8 @@ for(var i = 0; i < 3; i++){
 // Line Graph stuff
 
 
-var lineGraph = function(){
+var lineGraph = function(imgID){
+	console.log(imgID)
 	d3.select('#albumData').selectAll("*").remove();
 	var width = 1000;
 	var height = 300;
