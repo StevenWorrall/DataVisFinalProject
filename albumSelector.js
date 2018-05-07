@@ -4,6 +4,7 @@
 // To display the rectangles
 
 var svgs = [];
+var count = 0;
 
 for(var i = 0; i < 3; i++){
 	var start = "#albumCol";
@@ -19,7 +20,14 @@ for(var i = 0; i < 3; i++){
 	{x1: 506, x2: 706, y1: 0, y2: 200, img: "Data/AlbumArtwork/Humble.png"},
 	{x1: 709, x2: 909, y1: 0, y2: 200, img: "Data/AlbumArtwork/LastCall.png"}];
 
-	for(var k = 0; k < 4; k++){
+	var albumImgs = ["Data/AlbumArtwork/GucciGang.png", "Data/AlbumArtwork/DatWay.png", "Data/AlbumArtwork/Humble.png", 
+	"Data/AlbumArtwork/LSD.png", "Data/AlbumArtwork/Narcos.png", "Data/AlbumArtwork/Panda.png",
+	"Data/AlbumArtwork/Raf.png", "Data/AlbumArtwork/SavageMode.png", "Data/AlbumArtwork/ThriftShop.png",
+	"Data/AlbumArtwork/UberEverywhere.png", "Data/AlbumArtwork/Versace.png", "Data/AlbumArtwork/LastCall.png"]
+
+	var g = count;
+
+	for(var k = g; k < g + 4; k++){
 		svg.append("defs")
 	    	.append("pattern")
 	    	.attr("id", k)
@@ -27,13 +35,16 @@ for(var i = 0; i < 3; i++){
 	    	.attr("width", 1)
 	    	.attr("height", 1)
 	   	 	.append("image")
-	   	 	.attr("xlink:href", data[k].img)
+	   	 	.attr("xlink:href", albumImgs[count])
 	    	// .attr("xlink:href", "Data/AlbumArtwork/GucciGang.png"),
 	  	  	.attr("width", ".1%")
 	    	.attr("height", ".5%")
 	    	.attr("preserveAspectRatio", "none")
 	    	;
+	   	count += 1;
+	   	console.log(albumImgs[count]);
 	}
+
 
 	var rects = svg.selectAll("foo")
 		.data(data)
@@ -43,7 +54,7 @@ for(var i = 0; i < 3; i++){
 		.attr("y", d=> d.y1)
 		.attr("width", d=> d.x2 - d.x1)
 		.attr("height", d=> d.y2 - d.y1)
-		.attr("fill", function(d, j) { return "url(#"+j+")"; })
+		.attr("fill", function(d, j) { var p = (k-4)+j; return "url(#"+p+")"; })
 		.on("click", function(){
 			var start1 = "#albumColH";
 			var end1 = i.toString();
