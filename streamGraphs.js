@@ -48,9 +48,9 @@ select.on("change", function() {
 		})
 		return obj;
 		})
-	d3.select("TrendGraph").remove();
-	buildStreamGraph(trddata2);
-	d3.select("#initial").remove();
+	d3.select("svg").remove();
+	buildStreamGraph2(trddata2);
+// 	d3.select("#initial").remove();
 	buildStreamGraph2(trddata2);
 	})	
 })
