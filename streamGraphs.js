@@ -21,9 +21,13 @@ var options = select
 	.data(data)
 	.enter()
 	.append('option')
-		.text(function (d) { return d; });
-var processed = "LouisVuitton";
+	.text(function (d) { return d; });
 
+var processed = "LouisVuitton";
+function onchange() {
+	selectValue = d3.select('select').property('value');
+	processed = selectValue.replace(/ /g, '');	
+}
 
 d3.csv('Data/demo.csv', function(err, d){
   if(err) console.log(err);
@@ -82,12 +86,6 @@ d3.csv('trendScore/'+processed+'.csv', function(err, d){
 	})
 	buildStreamGraph2(trddata2);
 })
-
-function onchange() {
-	selectValue = d3.select('select').property('value');
-	processed = selectValue.replace(/ /g, '');	
-};
-
 
 function buildStreamGraph(trddata) {
 var data = trddata;
@@ -220,41 +218,41 @@ svg.append("g")
 }
 
 
-// start on the selection grid
-function gridData(){
-	var width = 1000;
-	var height = 500;
-	var keys = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
-	var numberOfTexts = 12; 
-	var texts = d3.range(numberOfTexts).map(function(d,i){
-		return { x: width/2, y: y(i+1)}		
-	});
-	var svg = d3.select("#streamSelector").append("svg")
-		.attr("width", width)
-		.attr("height",height);
-	var g = svg.selectAll("g")
-		.data(texts)
-		.enter().append("g");
-	g.append("rect");
-	g.append("text")
-		.attr("x", function(d) { return d.x; })
-		.attr("y", function(d) { return d.y; })
-		.attr("fill", "#FFF")
-		.attr("text-anchor", "middle");
+// // start on the selection grid
+// function gridData(){
+// 	var width = 1000;
+// 	var height = 500;
+// 	var keys = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
+// 	var numberOfTexts = 12; 
+// 	var texts = d3.range(numberOfTexts).map(function(d,i){
+// 		return { x: width/2, y: y(i+1)}		
+// 	});
+// 	var svg = d3.select("#streamSelector").append("svg")
+// 		.attr("width", width)
+// 		.attr("height",height);
+// 	var g = svg.selectAll("g")
+// 		.data(texts)
+// 		.enter().append("g");
+// 	g.append("rect");
+// 	g.append("text")
+// 		.attr("x", function(d) { return d.x; })
+// 		.attr("y", function(d) { return d.y; })
+// 		.attr("fill", "#FFF")
+// 		.attr("text-anchor", "middle");
 	
-	svg.selectAll("text").each(function(d, i) {
-        	keys[i].bb = this.getBBox(); // get bounding box of text field and store it in texts array
-   	});
+// 	svg.selectAll("text").each(function(d, i) {
+//         	keys[i].bb = this.getBBox(); // get bounding box of text field and store it in texts array
+//    	});
 
-    	var paddingLeftRight = 18; // adjust the padding values depending on font and font size
-    	var paddingTopBottom = 5;
+//     	var paddingLeftRight = 18; // adjust the padding values depending on font and font size
+//     	var paddingTopBottom = 5;
 
-    	svg.selectAll("rect")
-		.attr("x", function(d) { return d.x - d.bb.width/2 - paddingLeftRight/2; })
-		.attr("y", function(d) { return d.y - d.bb.height + paddingTopBottom/2;  })
-		.attr("width", function(d) { return d.bb.width + paddingLeftRight; })
-		.attr("height", function(d) { return d.bb.height + paddingTopBottom; });
-}
+//     	svg.selectAll("rect")
+// 		.attr("x", function(d) { return d.x - d.bb.width/2 - paddingLeftRight/2; })
+// 		.attr("y", function(d) { return d.y - d.bb.height + paddingTopBottom/2;  })
+// 		.attr("width", function(d) { return d.bb.width + paddingLeftRight; })
+// 		.attr("height", function(d) { return d.bb.height + paddingTopBottom; });
+// }
 
 	
 // function gridData() {
