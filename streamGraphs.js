@@ -8,12 +8,12 @@ var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
-var select = d3.select('body')
+var select = d3.select('dropdown')
   .append('select')
   	.attr('class','select')
     .on('change',onchange)
 
-var selectValue = "Gucci";
+var selectValue;
 
 var options = select
   .selectAll('option')
