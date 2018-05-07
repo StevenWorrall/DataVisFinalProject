@@ -82,11 +82,11 @@ var stack = d3.stack()
 var series = stack(data);
 
 var width = 500,
-    height = 800;
+    height = 850;
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
-    .range([50, 800]);
+    .range([25,825]);
 
 // setup axis
 // var xAxis = d3.axisLeft(x);
@@ -146,11 +146,11 @@ var stack = d3.stack()
 var series = stack(data);
 
 var width = 500,
-    height = 800;
+    height = 850;
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
-    .range([50, 800]);
+    .range([25, 825]);
 
 // setup axis
 var xAxis = d3.axisRight(x);
