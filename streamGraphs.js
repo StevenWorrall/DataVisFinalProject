@@ -80,7 +80,8 @@ select.on("change", function() {
 
 	buildStreamGraph2(trddata2);
 	buildStreamGraph2(trddata3);
-	})	
+	})
+	})
 })
 
 d3.csv('Data/demo.csv', function(err, d){
