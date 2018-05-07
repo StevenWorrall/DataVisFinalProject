@@ -51,6 +51,7 @@ select.on("change", function() {
 // 	d3.select("svg").remove();
 // 	svg.selectAll("*").remove();
 	d3.select("#TrendGraph").remove();
+	d3.select("#TrendGraph").remove();
 	d3.select("#initial").remove();
 	d3.select("#initial").remove();
 
