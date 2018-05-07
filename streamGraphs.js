@@ -217,7 +217,7 @@ function gridData() {
     // iterate for cells/columns inside rows
     for (var column = 0; column < 4; column++) {
       data[row].push({
-        x: xpos,
+        x: xpos+200,
         y: ypos,
         width: width,
         height: height,
@@ -240,7 +240,7 @@ console.log(gridData);
 
 var grid = d3.select("#streamSelector")
   .append("svg")
-  .attr("width",610)
+  .attr("width",1000)
   .attr("height",460);
   
 var row = grid.selectAll(".row")
