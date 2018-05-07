@@ -48,7 +48,7 @@ select.on("change", function() {
 		})
 		return obj;
 		})
-	buildStreamGraph2(trddata2);
+	updateGraph(trddata2);
 	})	
 })
 
@@ -107,7 +107,7 @@ d3.csv('trendScore/'+processed+'.csv', function(err, d){
 	 })
 		return obj;
 	})
-	updateGraph(trddata2);
+	buildStreamGraph2(trddata2);
 })
 
 function buildStreamGraph(trddata) {
