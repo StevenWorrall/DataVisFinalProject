@@ -51,7 +51,7 @@ select.on("change", function() {
 // 	d3.select("svg").remove();
 // 	svg.selectAll("*").remove();
 	d3.select("#TrendGraph").remove();
-	
+	d3.select("#initial").remove();
 	d3.select("#initial").remove();
 
 	buildStreamGraph2(trddata2);
@@ -89,32 +89,6 @@ d3.csv('Data/demo.csv', function(err, d){
 //   console.log(trddata)
   buildStreamGraph(trddata);
   
-})
-
-d3.csv('trendScore/'+processed+'.csv', function(err, d){
-	if(err) console.log(err);
-	//console.log(d)
-	var nested_data = d3.nest()
-		.key(function(d) { return d.Year; })
-		.entries(d);
-
-	console.log(nested_data);
-
-	var trddata2 = nested_data.map(function(d){
-	var obj = {
-	    month: new Date(d.key)
-	 }
-	d.values.forEach(function(v){
-		obj[v.Keyword] = +v.Popularity;
-
-		if(!keyarray.includes(d.Keyword)){
-		keyarray.push(d.Keyword);
-
-	      }
-	 })
-		return obj;
-	})
-	buildStreamGraph2(trddata2);
 })
 
 function buildStreamGraph(trddata) {
