@@ -52,14 +52,14 @@ for(var i = 0; i < 3; i++){
 		.attr("y", d=> d.y1)
 		.attr("width", d=> d.x2 - d.x1)
 		.attr("height", d=> d.y2 - d.y1)
+		.attr("id", function(d, j) { var p = (k-4)+j; return p; })
 		.attr("fill", function(d, j) { var p = (k-4)+j; return "url(#"+p+")"; })
-		.on("click", function(d, j){
-			var p = (k-4)+j;
-			lineGraph(albumImgs[p], p);
+		.on("click", function(rect, r){
+			lineGraph(albumImgs[this.id], this.id);
 		});
 	
 	svgs.push(rects);
-}
+}	
 
 
 // Line Graph stuff
@@ -68,7 +68,6 @@ for(var i = 0; i < 3; i++){
 var lineGraph = function(imgID, num){
 	var ne = imgID.split("/");
 	var ne = ne[2].split(".");
-	console.log(ne[0])
 	d3.select('#albumData').selectAll("*").remove();
 	var width = 1000;
 	var height = 300;
@@ -135,7 +134,6 @@ var lineGraph = function(imgID, num){
 	  return d;
 	}, function(error, data) {
 	  if (error) throw error;
-	  console.log(data);
 
 	  x.domain(d3.extent(data, function(d) { return d.date; }));
 	  y.domain(d3.extent(data, function(d) { return d.close; }));
