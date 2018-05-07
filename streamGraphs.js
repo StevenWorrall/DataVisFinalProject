@@ -241,7 +241,7 @@ var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1]+10;}); })])
-    .range([380, 280]);
+    .range([320, 220]);
 	
 var yAxis = d3.axisBottom(y);
 
