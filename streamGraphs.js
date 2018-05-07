@@ -161,7 +161,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .attr("class", "TrendGraph")
+    .attr("id", "TrendGraph")
     .style("fill", function() { return color(Math.random()); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
@@ -294,7 +294,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .attr("class", "initialGraph")
+    .attr("id", "initialGraph")
     .style("fill", function() { return color(Math.random()); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
