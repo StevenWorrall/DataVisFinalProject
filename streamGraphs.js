@@ -8,8 +8,9 @@ var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
-var select = d3.select('dropdownmenu')
-  .append('select')
+var select = d3.select('#dropdownmenu')
+
+select.append('select')
   	.attr('class','select')
     .on('change',onchange)
 
@@ -17,7 +18,8 @@ var selectValue;
 
 var options = select
   .selectAll('option')
-	.data(data).enter()
+	.data(data)
+	.enter()
 	.append('option')
 		.text(function (d) { return d; });
 var processed = "LouisVuitton";
