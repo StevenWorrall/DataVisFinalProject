@@ -225,7 +225,7 @@ function gridData(){
 		.attr("text-anchor", "middle");
 	
 	svg.selectAll("text").each(function(d, i) {
-        	texts[i].bb = this.getBBox(); // get bounding box of text field and store it in texts array
+        	keys[i].bb = this.getBBox(); // get bounding box of text field and store it in texts array
    	});
 
     	var paddingLeftRight = 18; // adjust the padding values depending on font and font size
