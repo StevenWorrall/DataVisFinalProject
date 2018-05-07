@@ -211,11 +211,11 @@ function gridData() {
   var click = 0;
   
   // iterate for rows 
-  for (var row = 0; row < 5; row++) {
+  for (var row = 0; row < 4; row++) {
     data.push( new Array() );
     
     // iterate for cells/columns inside rows
-    for (var column = 0; column < 4; column++) {
+    for (var column = 0; column < 5; column++) {
       data[row].push({
         x: xpos+200,
         y: ypos,
