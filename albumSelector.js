@@ -42,7 +42,6 @@ for(var i = 0; i < 3; i++){
 	    	.attr("preserveAspectRatio", "none")
 	    	;
 	   	count += 1;
-	   	console.log(albumImgs[count]);
 	}
 
 
@@ -56,123 +55,98 @@ for(var i = 0; i < 3; i++){
 		.attr("height", d=> d.y2 - d.y1)
 		.attr("fill", function(d, j) { var p = (k-4)+j; return "url(#"+p+")"; })
 		.on("click", function(){
-			var start1 = "#albumColH";
-			var end1 = i.toString();
-			var divPath1 = start1.concat(end1);
-			var divvy = d3.select(divPath1);
-
-			if (divvy.classed("expandedDiv")){
-				divvy.classed("expandedDiv", false);
-			} else {
-				divvy.classed("expandedDiv", true);
-			}
+			lineGraph();
+			console.log("hi")
 		});
 	
 	svgs.push(rects);
 }
 
-svgs.forEach(function(rects,i){
-
-	rects.text(i);
-	
-
-});
-
-d3.selectAll(".node").on("click", function() {
-  //check if node is already selected
-  var text = d3.select(this).select("text");
-  if (text.classed("selectedText")) {
-    text.classed("selectedText", false);
-    //Remove class selectedNode
-  } else {
-    text.classed("selectedText", true);    
-    //Adds class selectedNode
-  }
-});
 
 // Line Graph stuff
 
-// var width = 1000;
-// var height = 300;
 
-// var data1 = ["Song: Gucci Gang", "Artist: Lil Pump","Word Count: 53","Release Date: August 31, 2017","Short description about song."]
+var lineGraph = function(){
+	d3.select('#albumData').selectAll("*").remove();
+	var width = 1000;
+	var height = 300;
 
-// var svg = d3.select("#albumCol0Hidden")
-// 	.data(data1)
-// 	.append("svg")
-// 	.attr("width", width)
-// 	.attr("height", height);
+	var data1 = ["Song: Gucci Gang", "Artist: Lil Pump","Word Count: 53","Release Date: August 31, 2017","Short description about song."]
 
-// svg.append("rect")
-// 	.attr("x", 100)
-//     .attr("width", 809)
-//     .attr("height", "100%")
-//     .attr("fill", "#fcfcfc");
+	var newsvg = d3.select("#albumData")
+		.data(data1)
+		.append("svg")
+		.attr("width", width)
+		.attr("height", height);
 
-// var count = -40;
+	newsvg.append("rect")
+		.attr("x", 100)
+    	.attr("width", 809)
+    	.attr("height", "100%")
+    	.attr("fill", "#fcfcfc");
 
-// for(var i = 0; i < 6; i++){
-// 	text = svg.append('text')
-// 	    .attr('x', 140)
-// 	    .attr('y', function(data1) {count += 40; return 70+ count; })
-// 	    .attr('fill', 'black')
-// 	    .attr('font-size', '22px')
-// 	    .text(data1[i]);
-// }
+	var count = -40;
 
-// var g = svg.append("g").attr("transform", "translate(500,20)");
+	for(var i = 0; i < 6; i++){
+		text = newsvg.append('text')
+	    	.attr('x', 140)
+	    	.attr('y', function(data1) {count += 40; return 70+ count; })
+	    	.attr('fill', 'black')
+	    	.attr('font-size', '22px')
+	    	.text(data1[i]);
+	}
 
-// var parseTime = d3.timeParse("%M/%Y");
+	var g = newsvg.append("g").attr("transform", "translate(500,20)");
+	var parseTime = d3.timeParse("%M/%Y");
 
-// var x = d3.scaleTime()
-//     .rangeRound([0, 375]);
+	var x = d3.scaleTime()
+    	.rangeRound([0, 375]);
 
-// var y = d3.scaleLinear()
-//     .rangeRound([225, 24]);
+	var y = d3.scaleLinear()
+    	.rangeRound([225, 24]);
 
-// var line = d3.line()
-//     .x(function(d) { return x(d.date); })
-//     .y(function(d) { return y(d.close); });
+	var line = d3.line()
+    	.x(function(d) { return x(d.date); })
+    	.y(function(d) { return y(d.close); });
 
-// d3.csv("trendScore/Gucci.csv", function(d) {
-// 	var spli = d.time.split("-");
-// 	var dat = spli[1].concat("/"+spli[0]);
-//   d.date = parseTime(dat);
-//   d.close = +d.close;
-//   return d;
-// }, function(error, data) {
-//   if (error) throw error;
-//   console.log(data);
+	// d3.csv("trendScore/Gucci.csv", function(d) {
+	// 	var spli = d.time.split("-");
+	// 	var dat = spli[1].concat("/"+spli[0]);
+	//   d.date = parseTime(dat);
+	//   d.close = +d.close;
+	//   return d;
+	// }, function(error, data) {
+	//   if (error) throw error;
+	//   console.log(data);
 
-//   x.domain(d3.extent(data, function(d) { return d.date; }));
-//   y.domain(d3.extent(data, function(d) { return d.close; }));
+	//   x.domain(d3.extent(data, function(d) { return d.date; }));
+	//   y.domain(d3.extent(data, function(d) { return d.close; }));
 
-//   g.append("g")
-//       .attr("transform", "translate(0,225)")
-//       .call(d3.axisBottom(x))
-//     .select(".domain")
-//       .remove();
+	//   g.append("g")
+	//       .attr("transform", "translate(0,225)")
+	//       .call(d3.axisBottom(x))
+	//     .select(".domain")
+	//       .remove();
 
-//   g.append("g")
-//       .call(d3.axisLeft(y))
-//     .append("text")
-//       .attr("fill", "#000")
-//       .attr("transform", "rotate(-90)")
-//       .attr("y", 6)
-//       .attr("dy", "0.71em")
-//       .attr("text-anchor", "end")
-//       .text("Trend");
+	//   g.append("g")
+	//       .call(d3.axisLeft(y))
+	//     .append("text")
+	//       .attr("fill", "#000")
+	//       .attr("transform", "rotate(-90)")
+	//       .attr("y", 6)
+	//       .attr("dy", "0.71em")
+	//       .attr("text-anchor", "end")
+	//       .text("Trend");
 
-//   g.append("path")
-//       .datum(data)
-//       .attr("fill", "none")
-//       .attr("stroke", "blue")
-//       .attr("stroke-linejoin", "round")
-//       .attr("stroke-linecap", "round")
-//       .attr("stroke-width", 1.5)
-//       .attr("d", line);
-// });
+	//   g.append("path")
+	//       .datum(data)
+	//       .attr("fill", "none")
+	//       .attr("stroke", "blue")
+	//       .attr("stroke-linejoin", "round")
+	//       .attr("stroke-linecap", "round")
+	//       .attr("stroke-width", 1.5)
+	//       .attr("d", line);
+	// });
 
-
-
+}
 
