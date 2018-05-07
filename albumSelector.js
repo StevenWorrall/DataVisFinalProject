@@ -109,44 +109,44 @@ var lineGraph = function(imgID){
     	.x(function(d) { return x(d.date); })
     	.y(function(d) { return y(d.close); });
 
-	// d3.csv("trendScore/Gucci.csv", function(d) {
-	// 	var spli = d.time.split("-");
-	// 	var dat = spli[1].concat("/"+spli[0]);
-	//   d.date = parseTime(dat);
-	//   d.close = +d.close;
-	//   return d;
-	// }, function(error, data) {
-	//   if (error) throw error;
-	//   console.log(data);
+	d3.csv("trendScore/Gucci.csv", function(d) {
+		var spli = d.Year.split("-");
+		var dat = spli[1].concat("/"+spli[0]);
+	  d.date = parseTime(dat);
+	  d.close = +d.Popularity;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
+	  console.log(data);
 
-	//   x.domain(d3.extent(data, function(d) { return d.date; }));
-	//   y.domain(d3.extent(data, function(d) { return d.close; }));
+	  x.domain(d3.extent(data, function(d) { return d.date; }));
+	  y.domain(d3.extent(data, function(d) { return d.close; }));
 
-	//   g.append("g")
-	//       .attr("transform", "translate(0,225)")
-	//       .call(d3.axisBottom(x))
-	//     .select(".domain")
-	//       .remove();
+	  g.append("g")
+	      .attr("transform", "translate(0,225)")
+	      .call(d3.axisBottom(x))
+	    .select(".domain")
+	      .remove();
 
-	//   g.append("g")
-	//       .call(d3.axisLeft(y))
-	//     .append("text")
-	//       .attr("fill", "#000")
-	//       .attr("transform", "rotate(-90)")
-	//       .attr("y", 6)
-	//       .attr("dy", "0.71em")
-	//       .attr("text-anchor", "end")
-	//       .text("Trend");
+	  g.append("g")
+	      .call(d3.axisLeft(y))
+	    .append("text")
+	      .attr("fill", "#000")
+	      .attr("transform", "rotate(-90)")
+	      .attr("y", 6)
+	      .attr("dy", "0.71em")
+	      .attr("text-anchor", "end")
+	      .text("Trend");
 
-	//   g.append("path")
-	//       .datum(data)
-	//       .attr("fill", "none")
-	//       .attr("stroke", "blue")
-	//       .attr("stroke-linejoin", "round")
-	//       .attr("stroke-linecap", "round")
-	//       .attr("stroke-width", 1.5)
-	//       .attr("d", line);
-	// });
+	  g.append("path")
+	      .datum(data)
+	      .attr("fill", "none")
+	      .attr("stroke", "blue")
+	      .attr("stroke-linejoin", "round")
+	      .attr("stroke-linecap", "round")
+	      .attr("stroke-width", 1.5)
+	      .attr("d", line);
+	});
 
 }
 
