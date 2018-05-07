@@ -33,7 +33,7 @@ div.streamGraphs {
 }
 
 div.hidden {
-    display: none;
+  display: none;
 }
 
 div.toolTip {
@@ -47,3 +47,16 @@ div.toolTip {
 div.streamSelector {
   padding-bottom: 200px;
 }
+
+div.hiddenDiv{
+  display: none;
+}
+
+div.expandedDiv{
+  width: 1000px;
+  height: 200px;
+  margin: auto;
+}
+
+
+
