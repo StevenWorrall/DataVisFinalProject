@@ -48,10 +48,14 @@ div.toolTip {
 }
 div.title1{
   left: 250px;
+  position: relative;
+  top: 100px;
   
 }
 div.title2{
   right: 250px;
+  position: relative;
+  top: 100px;
 }
 
 div.streamSelector {
