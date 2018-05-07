@@ -272,6 +272,8 @@ var column = row.selectAll(".square")
      if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
     });
 column.append("text")
+	.attr("x", function(d){return d.x;})
+	.attr("y", function(d){return d.y;})
       .style("fill", "black")
       .text(function(d) {
         if(d.id == 0){ return "Louis Vuitton"}
