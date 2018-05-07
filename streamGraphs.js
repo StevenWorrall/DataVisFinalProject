@@ -14,7 +14,7 @@ select.append('select')
   	.attr('class','select')
     .on('change',onchange)
 
-var selectValue;
+var selectValue = "Louis Vuitton";
 
 var options = select
   .selectAll('option')
@@ -155,7 +155,7 @@ function buildStreamGraph2(trddata) {
 var data = trddata;
 
 var stack = d3.stack()
-    .keys([processed])
+    .keys([selectValue])
     .order(d3.stackOrderNone)
     .offset(d3.stackOffsetWiggle);
 
