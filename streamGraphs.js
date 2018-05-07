@@ -48,6 +48,7 @@ select.on("change", function() {
 		})
 		return obj;
 		})
+	d3.select("initial").remove();
 	buildStreamGraph2(trddata2);
 	})	
 })
@@ -212,13 +213,16 @@ var area = d3.area()
     .curve(d3.curveBasis);
 
 var svg = d3.select("#streamGraphs").append("svg")
+    .attr("id","initial")
     .attr("width", width)
     .attr("height", height);
+	
 
 svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
+    .attr("class", "initialGraph")
     .style("fill", function() { return color(Math.random()); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
@@ -240,7 +244,70 @@ svg.append("g")
 //             .call(yAxis);  
 }
 
+function updateGraph(trddata) {
+var data = trddata;
 
+var stack = d3.stack()
+    .keys([selectValue])
+    .order(d3.stackOrderNone)
+    .offset(d3.stackOffsetWiggle);
+
+var series = stack(data);
+
+var width = 500,
+    height = 850;
+
+var x = d3.scaleTime()
+    .domain(d3.extent(data, function(d){ return d.month; }))
+    .range([25, 825]);
+
+// setup axis
+var xAxis = d3.axisRight(x);
+
+var y = d3.scaleLinear()
+    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
+    .range([350, 250]);
+	
+var yAxis = d3.axisBottom(y);
+
+var color = d3.scaleLinear()
+    .range(["#51D0D7", "#31B5BB"]);
+
+var color = d3.interpolateCool;
+
+var area = d3.area()
+    .y(function(d) { return x(d.data.month); })
+    .x0(function(d) { return y(d[0]); })
+    .x1(function(d) { return y(d[1]); })
+    .curve(d3.curveBasis);
+
+var svg = d3.select(".initialGraph")
+
+svg.selectAll("path")
+    .data(series)
+    .enter().append("path")
+    .attr("d", area)
+    .attr("class", "initialGraph")
+    .style("fill", function() { return color(Math.random()); })
+    .on('mouseover', function(d){      
+      d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
+  		d3.select("#major").text(d.key);
+    })
+    .on('mouseout', function(d){      
+      d3.select(this).style('fill', 
+         d3.rgb( d3.select(this).style("fill") ).darker());
+         d3.select("#major").text("KEYWORD (Hover over the graph) ");
+})
+
+svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", 150, 100)
+            .call(xAxis);  
+// svg.append("g")
+//             .attr("class", "axis axis--y")
+//             .attr("transform", 0, "translate(" + (height) + ")")
+//             .call(yAxis);  
+}
 // // start on the selection grid
 // function gridData(){
 // 	var width = 1000;
