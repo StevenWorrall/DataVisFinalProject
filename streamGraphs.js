@@ -87,8 +87,11 @@ d3.csv('Data/demo.csv', function(err, d){
     return obj;
   })
 //   console.log(trddata)
+  //Trend data
   buildStreamGraph(trddata);
-  
+	//word count data
+  buildStreamGraph(trddata);
+
 })
 
 function buildStreamGraph(trddata) {
