@@ -48,7 +48,8 @@ select.on("change", function() {
 		})
 		return obj;
 		})
-	updateGraph(trddata2);
+	d3.select("initial").remove();
+	buildStreamGraph2(trddata2);
 	})	
 })
 
@@ -212,8 +213,10 @@ var area = d3.area()
     .curve(d3.curveBasis);
 
 var svg = d3.select("#streamGraphs").append("svg")
+    .attr("id","initial")
     .attr("width", width)
     .attr("height", height);
+	
 
 svg.selectAll("path")
     .data(series)
