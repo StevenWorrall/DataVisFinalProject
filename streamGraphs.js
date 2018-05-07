@@ -6,7 +6,24 @@ var parseYear = d3.timeParse("%Y-%m");
 // Format the year variable
 var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
+var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
+var select = d3.select('body')
+  .append('select')
+  	.attr('class','select')
+    .on('change',onchange)
+
+var selectValue = "Gucci";
+
+var options = select
+  .selectAll('option')
+	.data(data).enter()
+	.append('option')
+		.text(function (d) { return d; });
+
+function onchange() {
+	selectValue = d3.select('select').property('value')
+};
 d3.csv('Data/demo.csv', function(err, d){
   if(err) console.log(err);
   
@@ -39,7 +56,8 @@ d3.csv('Data/demo.csv', function(err, d){
   
 })
 
-d3.csv('trendScore/Gucci.csv', function(err, d){
+
+d3.csv('trendScore/'+selectValue+'.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -139,7 +157,7 @@ function buildStreamGraph2(trddata) {
 var data = trddata;
 
 var stack = d3.stack()
-    .keys(["Gucci"])
+    .keys([selectValue])
     .order(d3.stackOrderNone)
     .offset(d3.stackOffsetWiggle);
 
