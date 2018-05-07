@@ -223,7 +223,7 @@ function gridData() {
         width: width,
         height: height,
         click: click,
-	id: id;
+	id: id
 	 
       })
       // increment the x position. I.e. move it over by 50 (width variable)
