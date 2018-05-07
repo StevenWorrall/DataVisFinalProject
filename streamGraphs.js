@@ -106,14 +106,15 @@ var width = 500,
 
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d){ return d.month; }))
-    .range([25,825]);
+    .range([25, 825]);
 
 // setup axis
-// var xAxis = d3.axisLeft(x);
+var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([360, -300]);
+    .range([350, 250]);
+	
 var yAxis = d3.axisBottom(y);
 
 var color = d3.scaleLinear()
@@ -146,6 +147,10 @@ svg.selectAll("path")
          d3.rgb( d3.select(this).style("fill") ).darker());
          d3.select("#major").text("Mouse over");
 })
+svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", 150, 100)
+            .call(xAxis);
 
 // svg.append("g")
 //             .attr("class", "axis axis--x")
