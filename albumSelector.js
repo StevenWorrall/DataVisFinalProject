@@ -36,7 +36,6 @@ for(var i = 0; i < 3; i++){
 	    	.attr("height", 1)
 	   	 	.append("image")
 	   	 	.attr("xlink:href", albumImgs[count])
-	    	// .attr("xlink:href", "Data/AlbumArtwork/GucciGang.png"),
 	  	  	.attr("width", ".1%")
 	    	.attr("height", ".5%")
 	    	.attr("preserveAspectRatio", "none")
@@ -54,8 +53,9 @@ for(var i = 0; i < 3; i++){
 		.attr("width", d=> d.x2 - d.x1)
 		.attr("height", d=> d.y2 - d.y1)
 		.attr("fill", function(d, j) { var p = (k-4)+j; return "url(#"+p+")"; })
-		.on("click", function(){
-			lineGraph("hi");
+		.on("click", function(d, j){
+			var p = (k-4)+j;
+			lineGraph(albumImgs[p]);
 		});
 	
 	svgs.push(rects);
@@ -66,7 +66,9 @@ for(var i = 0; i < 3; i++){
 
 
 var lineGraph = function(imgID){
-	console.log(imgID)
+	var ne = imgID.split("/");
+	var ne = ne[2].split(".");
+	console.log(ne[0])
 	d3.select('#albumData').selectAll("*").remove();
 	var width = 1000;
 	var height = 300;
