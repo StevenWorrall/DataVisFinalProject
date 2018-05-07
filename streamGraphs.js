@@ -209,6 +209,7 @@ function gridData() {
   var width = 150;
   var height = 150;
   var click = 0;
+  var id = 0;
   
   // iterate for rows 
   for (var row = 0; row < 3; row++) {
@@ -221,9 +222,12 @@ function gridData() {
         y: ypos,
         width: width,
         height: height,
-        click: click
+        click: click,
+	id: id;
+	 
       })
       // increment the x position. I.e. move it over by 50 (width variable)
+	id += 1; 
       xpos += width;
     }
     // reset the x position after a row is complete
@@ -265,3 +269,19 @@ var column = row.selectAll(".square")
      if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
      if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
     });
+column.append("text")
+      .style("fill", "black")
+      .text(function(d) {
+        if(d.id == 0){ return "Louis Vuitton"}
+        if(d.id == 1){ return "Gucci"}
+        if(d.id == 2){ return "Honcho"}
+        if(d.id == 3){ return "Humble"}
+        if(d.id == 4){ return "LSD"}
+        if(d.id == 5){ return "Pablo"}
+        if(d.id == 6){ return "Panda"}
+        if(d.id == 7){ return "Raf Simons"}
+        if(d.id == 8){ return "Savage"}
+        if(d.id == 9){ return "Thrift"}
+        if(d.id == 10){ return "Uber"}
+        if(d.id == 11){ return "Versace"}
+      })
