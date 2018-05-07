@@ -8,7 +8,7 @@ var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
-var select = d3.select('dropdown')
+var select = d3.select('dropdownmenu')
   .append('select')
   	.attr('class','select')
     .on('change',onchange)
@@ -20,9 +20,10 @@ var options = select
 	.data(data).enter()
 	.append('option')
 		.text(function (d) { return d; });
-
+var processed;
 function onchange() {
-	selectValue = d3.select('select').property('value')
+	selectValue = d3.select('select').property('value');
+	processed = selectValue.replace(/ /g, '');
 };
 d3.csv('Data/demo.csv', function(err, d){
   if(err) console.log(err);
@@ -57,7 +58,7 @@ d3.csv('Data/demo.csv', function(err, d){
 })
 
 
-d3.csv('trendScore/'+selectValue+'.csv', function(err, d){
+d3.csv('trendScore/'+processed+'.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -157,7 +158,7 @@ function buildStreamGraph2(trddata) {
 var data = trddata;
 
 var stack = d3.stack()
-    .keys([selectValue])
+    .keys([processed])
     .order(d3.stackOrderNone)
     .offset(d3.stackOffsetWiggle);
 
