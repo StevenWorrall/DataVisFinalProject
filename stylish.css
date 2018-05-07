@@ -36,6 +36,9 @@ div.hidden {
   display: none;
 }
 
+div.dropdown{
+  text-align: center;
+}
 div.toolTip {
   text-align: center;
   font-size: 22px;
