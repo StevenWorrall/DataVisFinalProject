@@ -20,9 +20,37 @@ select
 
 var processed = "LouisVuitton";
 
-function onchange() {
-	selectValue = d3.select('select').property('value');
-	processed = selectValue.replace(/ /g, '');	
+select.on("change", function() {
+	selectValue = d3.select(this)
+	.select('select').property('value');
+	processed = selectValue.replace(/ /g, '');
+	
+	d3.csv('trendScore/'+processed+'.csv', function(err, d){
+	if(err) console.log(err);
+	//console.log(d)
+	var nested_data = d3.nest()
+		.key(function(d) { return d.Year; })
+		.entries(d);
+
+	console.log(nested_data);
+
+	var trddata2 = nested_data.map(function(d){
+	var obj = {
+	    month: new Date(d.key)
+	 }
+	d.values.forEach(function(v){
+		obj[v.Keyword] = +v.Popularity;
+
+		if(!keyarray.includes(d.Keyword)){
+		keyarray.push(d.Keyword);
+
+	      }
+	 })
+		return obj;
+	})
+	buildStreamGraph2(trddata2);
+})
+	
 }
 
 d3.csv('Data/demo.csv', function(err, d){
