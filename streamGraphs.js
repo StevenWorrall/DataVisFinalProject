@@ -206,8 +206,8 @@ function gridData() {
   var data = new Array();
   var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
   var ypos = 1;
-  var width = 200;
-  var height = 60;
+  var width = 150;
+  var height = 150;
   var click = 0;
   
   // iterate for rows 
@@ -240,8 +240,8 @@ console.log(gridData);
 
 var grid = d3.select("#streamSelector")
   .append("svg")
-  .attr("width",1000)
-  .attr("height",320);
+  .attr("width",600)
+  .attr("height",450);
   
 var row = grid.selectAll(".row")
   .data(gridData)
