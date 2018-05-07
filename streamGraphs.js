@@ -200,14 +200,16 @@ svg.append("g")
 //             .attr("transform", 0, "translate(" + (height) + ")")
 //             .call(yAxis);  
 }
+
+
 // start on the selection grid
 
 function gridData() {
   var data = new Array();
   var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
   var ypos = 1;
-  var width = 150;
-  var height = 150;
+  var width = 180;
+  var height = 110;
   var click = 0;
   var id = 0;
   
