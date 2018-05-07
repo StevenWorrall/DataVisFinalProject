@@ -203,89 +203,124 @@ svg.append("g")
 
 
 // start on the selection grid
+function gridData(){
+	var width = 1000;
+	var height = 500;
+	var keys = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
+	var numberOfTexts = 12; 
+	var texts = d3.range(numberOfTexts).map(function(d,i){
+		return { x: width/2, y: y(i+1)}		
+	});
+	var svg = d3.select("#streamSelector").append("svg")
+		.attr("width", width)
+		.attr("height",height);
+	var g = svg.selectAll("g")
+		.data(texts)
+		.enter().append("g");
+	g.append("rect");
+	g.append("text")
+		.attr("x", function(d) { return d.x; })
+		.attr("y", function(d) { return d.y; })
+		.attr("fill", "#FFF")
+		.attr("text-anchor", "middle");
+	
+	svg.selectAll("text").each(function(d, i) {
+        	texts[i].bb = this.getBBox(); // get bounding box of text field and store it in texts array
+   	});
 
-function gridData() {
-  var data = new Array();
-  var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
-  var ypos = 1;
-  var width = 180;
-  var height = 110;
-  var click = 0;
-  var id = 0;
-  
-  // iterate for rows 
-  for (var row = 0; row < 3; row++) {
-    data.push( new Array() );
-    
-    // iterate for cells/columns inside rows
-    for (var column = 0; column < 4; column++) {
-      data[row].push({
-        x: xpos+200,
-        y: ypos,
-        width: width,
-        height: height,
-        click: click,
-	id: id
-	 
-      })
-      // increment the x position. I.e. move it over by 50 (width variable)
-	id += 1; 
-      xpos += width;
-    }
-    // reset the x position after a row is complete
-    xpos = 1;
-    // increment the y position for the next row. Move it down 50 (height variable)
-    ypos += height; 
-  }
-  return data;
+    	var paddingLeftRight = 18; // adjust the padding values depending on font and font size
+    	var paddingTopBottom = 5;
+
+    	svg.selectAll("rect")
+		.attr("x", function(d) { return d.x - d.bb.width/2 - paddingLeftRight/2; })
+		.attr("y", function(d) { return d.y - d.bb.height + paddingTopBottom/2;  })
+		.attr("width", function(d) { return d.bb.width + paddingLeftRight; })
+		.attr("height", function(d) { return d.bb.height + paddingTopBottom; });
 }
 
-var gridData = gridData();  
-// I like to log the data to the console for quick debugging
-console.log(gridData);
+	
+// function gridData() {
+//   var data = new Array();
+//   var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
+//   var ypos = 1;
+//   var width = 180;
+//   var height = 110;
+//   var click = 0;
+//   var id = 0;
+  
+//   // iterate for rows 
+//   for (var row = 0; row < 3; row++) {
+//     data.push( new Array() );
+    
+//     // iterate for cells/columns inside rows
+//     for (var column = 0; column < 4; column++) {
+//       data[row].push({
+//         x: xpos+200,
+//         y: ypos,
+//         width: width,
+//         height: height,
+//         click: click,
+// 	id: id
+	 
+//       })
+//       // increment the x position. I.e. move it over by 50 (width variable)
+// 	id += 1; 
+//       xpos += width;
+//     }
+//     // reset the x position after a row is complete
+//     xpos = 1;
+//     // increment the y position for the next row. Move it down 50 (height variable)
+//     ypos += height; 
+//   }
+//   return data;
+// }
 
-var grid = d3.select("#streamSelector")
-  .append("svg")
-  .attr("width",1000)
-  .attr("height",460);
+// var gridData = gridData();  
+// // I like to log the data to the console for quick debugging
+// console.log(gridData);
+
+// var svg = d3.select("#streamSelector")
+//   .append("svg")
+//   .attr("width",1000)
+//   .attr("height",460);
   
-var row = grid.selectAll(".row")
-  .data(gridData)
-  .enter().append("g")
-  .attr("class", "row");
+// var g = svg.selectAll("g")
+//   .data(texts)
+//   .enter().append("g")
+//   .attr("class", "row");
   
-var column = row.selectAll(".square")
-  .data(function(d) { return d; })
-  .enter().append("rect")
-  .attr("class","square")
-  .attr("x", function(d) { return d.x; })
-  .attr("y", function(d) { return d.y; })
-  .attr("width", function(d) { return d.width; })
-  .attr("height", function(d) { return d.height; })
-  .style("fill", "#fff")
-  .style("stroke", "#222")
-  .on('click', function(d) {
-       d.click ++;
-       if ((d.click)%4 == 0 ) { d3.select(this).style("fill","#fff"); }
-     if ((d.click)%4 == 1 ) { d3.select(this).style("fill","#2C93E8"); }
-     if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
-     if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
-    });
-column.append("text")
-	.attr("x", function(d){return d.x;})
-	.attr("y", function(d){return d.y;})
-      .style("fill", "black")
-      .text(function(d) {
-        if(d.id == 0){ return "Louis Vuitton"}
-        if(d.id == 1){ return "Gucci"}
-        if(d.id == 2){ return "Honcho"}
-        if(d.id == 3){ return "Humble"}
-        if(d.id == 4){ return "LSD"}
-        if(d.id == 5){ return "Pablo"}
-        if(d.id == 6){ return "Panda"}
-        if(d.id == 7){ return "Raf Simons"}
-        if(d.id == 8){ return "Savage"}
-        if(d.id == 9){ return "Thrift"}
-        if(d.id == 10){ return "Uber"}
-        if(d.id == 11){ return "Versace"}
-      })
+// var column = row.selectAll(".square")
+//   .data(function(d) { return d; })
+//   .enter().append("rect")
+//   .attr("class","square")
+//   .attr("x", function(d) { return d.x; })
+//   .attr("y", function(d) { return d.y; })
+//   .attr("width", function(d) { return d.width; })
+//   .attr("height", function(d) { return d.height; })
+//   .style("fill", "#fff")
+//   .style("stroke", "#222")
+//   .on('click', function(d) {
+//        d.click ++;
+//        if ((d.click)%4 == 0 ) { d3.select(this).style("fill","#fff"); }
+//      if ((d.click)%4 == 1 ) { d3.select(this).style("fill","#2C93E8"); }
+//      if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
+//      if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
+//     });
+// column.append("text")
+// 	.attr("x", function(d){return d.x;})
+// 	.attr("y", function(d){return d.y;})
+//       .style("fill", "black")
+//       .text(function(d) {
+//         if(d.id == 0){ return "Louis Vuitton"}
+//         if(d.id == 1){ return "Gucci"}
+//         if(d.id == 2){ return "Honcho"}
+//         if(d.id == 3){ return "Humble"}
+//         if(d.id == 4){ return "LSD"}
+//         if(d.id == 5){ return "Pablo"}
+//         if(d.id == 6){ return "Panda"}
+//         if(d.id == 7){ return "Raf Simons"}
+//         if(d.id == 8){ return "Savage"}
+//         if(d.id == 9){ return "Thrift"}
+//         if(d.id == 10){ return "Uber"}
+//         if(d.id == 11){ return "Versace"}
+//       })
