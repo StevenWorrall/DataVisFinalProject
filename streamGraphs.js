@@ -48,6 +48,29 @@ select.on("change", function() {
 		})
 		return obj;
 		})
+	d3.csv('wordCount/'+processed+'.csv', function(err, d){
+		if(err) console.log(err);
+		//console.log(d)
+		var nested_data = d3.nest()
+			.key(function(d) { return d.Year; })
+			.entries(d);
+
+			console.log(nested_data);
+
+		var trddata3 = nested_data.map(function(d){
+		var obj = {
+		    month: new Date(d.key)
+		 }
+		d.values.forEach(function(v){
+			obj[v.Keyword] = +v.Popularity;
+
+			if(!keyarray.includes(d.Keyword)){
+			keyarray.push(d.Keyword);
+
+		      	}
+		})
+		return obj;
+		})
 // 	d3.select("svg").remove();
 // 	svg.selectAll("*").remove();
 	d3.select("#TrendGraph").remove();
@@ -56,8 +79,9 @@ select.on("change", function() {
 	d3.select("#initial").remove();
 
 	buildStreamGraph2(trddata2);
-	buildStreamGraph2(trddata2);
-	})	
+	buildStreamGraph2(trddata3);
+	})
+	})
 })
 
 d3.csv('Data/demo.csv', function(err, d){
@@ -91,8 +115,39 @@ d3.csv('Data/demo.csv', function(err, d){
   //Trend data
   buildStreamGraph(trddata);
 	//word count data
-  buildStreamGraph(trddata);
+})
 
+d3.csv('wordCount/Demo.csv', function(err, d){
+  if(err) console.log(err);
+  
+  //console.log(d)
+  
+  var nested_data = d3.nest()
+		.key(function(d) { return d.year; })
+		.entries(d);
+  
+  console.log(nested_data);
+  
+  var trddata = nested_data.map(function(d){
+    var obj = {
+      month: new Date(d.key)
+    }
+    
+    d.values.forEach(function(v){
+      obj[v.Keyword] = +v.Popularity;
+      
+        if(!keyarray.includes(d.Keyword)){
+        keyarray.push(d.Keyword);
+
+      }
+    })
+//     console.log(obj)
+    return obj;
+  })
+//   console.log(trddata)
+  //Trend data
+  buildStreamGraph(trddata);
+	//word count data
 })
 
 function buildStreamGraph(trddata) {
@@ -113,8 +168,9 @@ var x = d3.scaleTime()
     .range([25, 825]);
 	
 var y = d3.scaleLinear()
-    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
+    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1]+70;}); })])
     .range([360, -270]);
+// 	console.log(d)
   
 // setup axis
 var xAxis = d3.axisRight(x);
@@ -184,8 +240,8 @@ var x = d3.scaleTime()
 var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
-    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([350, 250]);
+    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1]+10;}); })])
+    .range([320, 220]);
 	
 var yAxis = d3.axisBottom(y);
 
@@ -253,8 +309,8 @@ var x = d3.scaleTime()
 var xAxis = d3.axisRight(x);
 
 var y = d3.scaleLinear()
-    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1];}); })])
-    .range([350, 250]);
+    .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1]+10;}); })])
+    .range([320, 220]);
 	
 var yAxis = d3.axisBottom(y);
 
