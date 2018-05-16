@@ -187,6 +187,7 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("width", width)
     .attr("height", height);
 var colorval = 0;
+	console.log(d3.keys);
 	if(d3.keys = "Louis Vuitton")
 		colorval = 0;
 	else if(d3.keys = "Gucci")
