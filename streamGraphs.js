@@ -254,7 +254,6 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("width", width)
     .attr("height", height);
 	
-var colorval = 0;
 
 	
 svg.selectAll("path")
@@ -264,6 +263,7 @@ svg.selectAll("path")
     .attr("class", "initialGraph")
     .style("fill", function(d,i) { 
 	console.log(d.key);
+	var colorval;
 	{
 		if(d.key == "Louis Vuitton")
 			colorval = 0;
@@ -291,7 +291,7 @@ svg.selectAll("path")
 			colorval = 11;
 	}
 	console.log(colorval);
-	return color(4); })
+	return color(colorval); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
