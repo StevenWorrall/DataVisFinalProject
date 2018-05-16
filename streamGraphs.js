@@ -289,9 +289,9 @@ svg.selectAll("path")
 			colorval = 10;
 		if(d.key == "Versace")
 			colorval = 11;
-	}
+	} i = colorval;
 	console.log(colorval);
-	return colorScale(colorval); })
+	return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
