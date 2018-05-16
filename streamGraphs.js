@@ -76,9 +76,13 @@ select.on("change", function() {
 	d3.select("#TrendGraph").remove();
 	d3.select("#initial").remove();
 	d3.select("#initial").remove();
-
+	if(processed != "Reset"){
 	buildStreamGraph2(trddata2);
 	buildStreamGraph2(trddata3);
+	} else {
+	buildStreamGraph(trddata2);
+	buildStreamGraph(trddata3);
+	}
 	})
 	})
 })
