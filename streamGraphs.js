@@ -6,7 +6,7 @@ var parseYear = d3.timeParse("%Y-%m");
 // Format the year variable
 var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
-var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
+var data = ["Reset", "Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
 var select = d3.select("#dropdownmenu")
 select
@@ -83,7 +83,7 @@ select.on("change", function() {
 	})
 })
 
-d3.csv('Data/demo.csv', function(err, d){
+d3.csv('Data/Reset.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -116,7 +116,7 @@ d3.csv('Data/demo.csv', function(err, d){
 	//word count data
 })
 
-d3.csv('wordCount/Demo.csv', function(err, d){
+d3.csv('wordCount/Reset.csv', function(err, d){
   if(err) console.log(err);
   
   //console.log(d)
@@ -498,3 +498,4 @@ svg.append("g")
 //         if(d.id == 10){ return "Uber"}
 //         if(d.id == 11){ return "Versace"}
 //       })
+
