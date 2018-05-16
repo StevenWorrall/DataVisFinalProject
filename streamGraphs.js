@@ -80,8 +80,71 @@ select.on("change", function() {
 	buildStreamGraph2(trddata2);
 	buildStreamGraph2(trddata3);
 	} else {
-	buildStreamGraph(trddata2);
-	buildStreamGraph(trddata3);
+	d3.csv('Data/Reset.csv', function(err, d){
+	  if(err) console.log(err);
+
+	  //console.log(d)
+
+	  var nested_data = d3.nest()
+			.key(function(d) { return d.year; })
+			.entries(d);
+
+	  console.log(nested_data);
+
+	  var trddata = nested_data.map(function(d){
+	    var obj = {
+	      month: new Date(d.key)
+	    }
+
+	    d.values.forEach(function(v){
+	      obj[v.Keyword] = +v.Popularity;
+
+		if(!keyarray.includes(d.Keyword)){
+		keyarray.push(d.Keyword);
+
+	      }
+	    })
+	//     console.log(obj)
+	    return obj;
+	  })
+	//   console.log(trddata)
+	  //Trend data
+	  buildStreamGraph(trddata);
+		//word count data
+	})
+
+	d3.csv('wordCount/Reset.csv', function(err, d){
+	  if(err) console.log(err);
+
+	  //console.log(d)
+
+	  var nested_data = d3.nest()
+			.key(function(d) { return d.year; })
+			.entries(d);
+
+	  console.log(nested_data);
+
+	  var trddata = nested_data.map(function(d){
+	    var obj = {
+	      month: new Date(d.key)
+	    }
+
+	    d.values.forEach(function(v){
+	      obj[v.Keyword] = +v.Popularity;
+
+		if(!keyarray.includes(d.Keyword)){
+		keyarray.push(d.Keyword);
+
+	      }
+	    })
+	//     console.log(obj)
+	    return obj;
+	  })
+	//   console.log(trddata)
+	  //Trend data
+	  buildStreamGraph(trddata);
+		//word count data
+	})
 	}
 	})
 	})
