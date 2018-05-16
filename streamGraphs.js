@@ -175,10 +175,7 @@ var y = d3.scaleLinear()
 // setup axis
 var xAxis = d3.axisRight(x);
 
-var color = d3.scaleLinear()
-    .range(["#51D0D7", "#31B5BB"]);
-
-var color = d3.interpolateCool;
+var color = d3.scaleOrdinal(d3["schemePaired"])
 
 var area = d3.area()
     .y(function(d) { return x(d.data.month); })
@@ -195,7 +192,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .style("fill", function() { return color(Math.random()); })
+    .style("fill", function(d,i) { return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
@@ -245,10 +242,7 @@ var y = d3.scaleLinear()
 	
 var yAxis = d3.axisBottom(y);
 
-var color = d3.scaleLinear()
-    .range(["#51D0D7", "#31B5BB"]);
-
-var color = d3.interpolateCool;
+var color = d3.scaleOrdinal(d3["schemePaired"])
 
 var area = d3.area()
     .y(function(d) { return x(d.data.month); })
@@ -267,7 +261,7 @@ svg.selectAll("path")
     .enter().append("path")
     .attr("d", area)
     .attr("class", "initialGraph")
-    .style("fill", function() { return color(Math.random()); })
+    .style("fill", function(d,i) { return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
