@@ -186,38 +186,11 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("id", "TrendGraph")
     .attr("width", width)
     .attr("height", height);
-var colorval = 0;
-	console.log(d3.keys);
-	if(d3.keys = "Louis Vuitton")
-		colorval = 0;
-	else if(d3.keys = "Gucci")
-		colorval = 1;
-	else if(d3.keys = "Honcho")
-		colorval = 2;
-	else if(d3.keys = "Humble")
-		colorval = 3;
-	else if(d3.keys = "LSD")
-		colorval = 4;
-	else if(d3.keys = "Pablo")
-		colorval = 5;
-	else if(d3.keys = "Panda")
-		colorval = 6;
-	else if(d3.keys = "Raf Simons")
-		colorval = 7;
-	else if(d3.keys = "Savage")
-		colorval = 8;
-	else if(d3.keys = "Thrift")
-		colorval = 9;
-	else if(d3.keys = "Uber")
-		colorval = 10;
-	else if(d3.keys = "Versace")
-		colorval = 11;
-	
 svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .style("fill", function(d,i) { return color(colorval); })
+    .style("fill", function(d,i) { return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
@@ -281,6 +254,7 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("height", height);
 	
 var colorval = 0;
+	console.log(d3.keys);
 	if(d3.keys = "Louis Vuitton")
 		colorval = 0;
 	else if(d3.keys = "Gucci")
