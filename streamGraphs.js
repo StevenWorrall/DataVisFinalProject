@@ -6,10 +6,16 @@ var parseYear = d3.timeParse("%Y-%m");
 // Format the year variable
 var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
-var data = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
+var data = ["All", "Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
-var selectValue = "Louis Vuitton";
+var selectValue = "All";
+
 var select = d3.select("#dropdownmenu")
+if(select = "All"){
+	var temp = ["Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber",
+		    "Versace"];
+	select = temp;
+}
 select
 .append("select")
 .selectAll("option")
