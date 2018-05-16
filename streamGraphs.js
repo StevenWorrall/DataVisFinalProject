@@ -290,7 +290,7 @@ svg.selectAll("path")
 			colorval = 11;
 	}
 	console.log(colorval);
-	return color(colorval); })
+	return color(4); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
