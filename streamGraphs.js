@@ -187,29 +187,29 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("width", width)
     .attr("height", height);
 var colorval = 0;
-	if(d.key = "Louis Vuitton")
+	if(d3.keys = "Louis Vuitton")
 		colorval = 0;
-	else if(d.key = "Gucci")
+	else if(d3.keys = "Gucci")
 		colorval = 1;
-	else if(d.key = "Honcho")
+	else if(d3.keys = "Honcho")
 		colorval = 2;
-	else if(d.key = "Humble")
+	else if(d3.keys = "Humble")
 		colorval = 3;
-	else if(d.key = "LSD")
+	else if(d3.keys = "LSD")
 		colorval = 4;
-	else if(d.key = "Pablo")
+	else if(d3.keys = "Pablo")
 		colorval = 5;
-	else if(d.key = "Panda")
+	else if(d3.keys = "Panda")
 		colorval = 6;
-	else if(d.key = "Raf Simons")
+	else if(d3.keys = "Raf Simons")
 		colorval = 7;
-	else if(d.key = "Savage")
+	else if(d3.keys = "Savage")
 		colorval = 8;
-	else if(d.key = "Thrift")
+	else if(d3.keys = "Thrift")
 		colorval = 9;
-	else if(d.key = "Uber")
+	else if(d3.keys = "Uber")
 		colorval = 10;
-	else if(d.key = "Versace")
+	else if(d3.keys = "Versace")
 		colorval = 11;
 	
 svg.selectAll("path")
@@ -280,29 +280,29 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("height", height);
 	
 var colorval = 0;
-	if(d.key = "Louis Vuitton")
+	if(d3.keys = "Louis Vuitton")
 		colorval = 0;
-	else if(d.key = "Gucci")
+	else if(d3.keys = "Gucci")
 		colorval = 1;
-	else if(d.key = "Honcho")
+	else if(d3.keys = "Honcho")
 		colorval = 2;
-	else if(d.key = "Humble")
+	else if(d3.keys = "Humble")
 		colorval = 3;
-	else if(d.key = "LSD")
+	else if(d3.keys = "LSD")
 		colorval = 4;
-	else if(d.key = "Pablo")
+	else if(d3.keys = "Pablo")
 		colorval = 5;
-	else if(d.key = "Panda")
+	else if(d3.keys = "Panda")
 		colorval = 6;
-	else if(d.key = "Raf Simons")
+	else if(d3.keys = "Raf Simons")
 		colorval = 7;
-	else if(d.key = "Savage")
+	else if(d3.keys = "Savage")
 		colorval = 8;
-	else if(d.key = "Thrift")
+	else if(d3.keys = "Thrift")
 		colorval = 9;
-	else if(d.key = "Uber")
+	else if(d3.keys = "Uber")
 		colorval = 10;
-	else if(d.key = "Versace")
+	else if(d3.keys = "Versace")
 		colorval = 11;
 	
 svg.selectAll("path")
