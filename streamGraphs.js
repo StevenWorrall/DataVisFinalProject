@@ -264,29 +264,29 @@ svg.selectAll("path")
     .style("fill", function(d,i) { 
 	console.log(d.key);
 	{
-		if(d.key = "Louis Vuitton")
+		if(d.key == "Louis Vuitton")
 			colorval = 0;
-		else if(d.key = "Gucci")
+		if(d.key == "Gucci")
 			colorval = 1;
-		else if(d.key = "Honcho")
+		if(d.key == "Honcho")
 			colorval = 2;
-		else if(d.key = "Humble")
+		if(d.key == "Humble")
 			colorval = 3;
-		else if(d.key = "LSD")
+		if(d.key == "LSD")
 			colorval = 4;
-		else if(d.key = "Pablo")
+		if(d.key == "Pablo")
 			colorval = 5;
-		else if(d.key = "Panda")
+		if(d.key == "Panda")
 			colorval = 6;
-		else if(d.key = "Raf Simons")
+		if(d.key == "Raf Simons")
 			colorval = 7;
-		else if(d.key = "Savage")
+		if(d.key == "Savage")
 			colorval = 8;
-		else if(d.key = "Thrift")
+		if(d.key == "Thrift")
 			colorval = 9;
-		else if(d.key = "Uber")
+		if(d.key == "Uber")
 			colorval = 10;
-		else if(d.key = "Versace")
+		if(d.key == "Versace")
 			colorval = 11;
 	}
 	console.log(colorval);
