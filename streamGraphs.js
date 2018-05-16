@@ -263,30 +263,33 @@ svg.selectAll("path")
     .attr("class", "initialGraph")
     .style("fill", function(d,i) { 
 	console.log(d.key);
-	if(d.key = "Louis Vuitton")
-		colorval = 0;
-	else if(d.key = "Gucci")
-		colorval = 1;
-	else if(d.key = "Honcho")
-		colorval = 2;
-	else if(d.key = "Humble")
-		colorval = 3;
-	else if(d.key = "LSD")
-		colorval = 4;
-	else if(d.key = "Pablo")
-		colorval = 5;
-	else if(d.key = "Panda")
-		colorval = 6;
-	else if(d.key = "Raf Simons")
-		colorval = 7;
-	else if(d.key = "Savage")
-		colorval = 8;
-	else if(d.key = "Thrift")
-		colorval = 9;
-	else if(d.key = "Uber")
-		colorval = 10;
-	else if(d.key = "Versace")
-		colorval = 11;
+	{
+		if(d.key = "Louis Vuitton")
+			colorval = 0;
+		else if(d.key = "Gucci")
+			colorval = 1;
+		else if(d.key = "Honcho")
+			colorval = 2;
+		else if(d.key = "Humble")
+			colorval = 3;
+		else if(d.key = "LSD")
+			colorval = 4;
+		else if(d.key = "Pablo")
+			colorval = 5;
+		else if(d.key = "Panda")
+			colorval = 6;
+		else if(d.key = "Raf Simons")
+			colorval = 7;
+		else if(d.key = "Savage")
+			colorval = 8;
+		else if(d.key = "Thrift")
+			colorval = 9;
+		else if(d.key = "Uber")
+			colorval = 10;
+		else if(d.key = "Versace")
+			colorval = 11;
+	}
+	console.log(colorval);
 	return color(colorval); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
