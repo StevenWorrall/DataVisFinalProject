@@ -186,12 +186,37 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("id", "TrendGraph")
     .attr("width", width)
     .attr("height", height);
-
+var colorval = 0;
+	if(d.key = "Louis Vuitton")
+		colorval = 0;
+	else if(d.key = "Gucci")
+		colorval = 1;
+	else if(d.key = "Honcho")
+		colorval = 2;
+	else if(d.key = "Humble")
+		colorval = 3;
+	else if(d.key = "LSD")
+		colorval = 4;
+	else if(d.key = "Pablo")
+		colorval = 5;
+	else if(d.key = "Panda")
+		colorval = 6;
+	else if(d.key = "Raf Simons")
+		colorval = 7;
+	else if(d.key = "Savage")
+		colorval = 8;
+	else if(d.key = "Thrift")
+		colorval = 9;
+	else if(d.key = "Uber")
+		colorval = 10;
+	else if(d.key = "Versace")
+		colorval = 11;
+	
 svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .style("fill", function(d,i) { return color(i); })
+    .style("fill", function(d,i) { return color(colorval); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
@@ -254,13 +279,38 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("width", width)
     .attr("height", height);
 	
-
+var colorval = 0;
+	if(d.key = "Louis Vuitton")
+		colorval = 0;
+	else if(d.key = "Gucci")
+		colorval = 1;
+	else if(d.key = "Honcho")
+		colorval = 2;
+	else if(d.key = "Humble")
+		colorval = 3;
+	else if(d.key = "LSD")
+		colorval = 4;
+	else if(d.key = "Pablo")
+		colorval = 5;
+	else if(d.key = "Panda")
+		colorval = 6;
+	else if(d.key = "Raf Simons")
+		colorval = 7;
+	else if(d.key = "Savage")
+		colorval = 8;
+	else if(d.key = "Thrift")
+		colorval = 9;
+	else if(d.key = "Uber")
+		colorval = 10;
+	else if(d.key = "Versace")
+		colorval = 11;
+	
 svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
     .attr("class", "initialGraph")
-    .style("fill", function(d,i) { return color(i); })
+    .style("fill", function(d,i) { return color(colorval); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
   		d3.select("#major").text(d.key);
