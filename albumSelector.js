@@ -122,7 +122,8 @@ var lineGraph = function(imgID, num){
 
 	var line = d3.line()
     	.x(function(d) { return x(d.date); })
-    	.y(function(d) { return y(d.close); });
+    	.y(function(d) { return y(d.close); })
+	.curve(d3.curveBundle);;
 
    	var csvtitle2 = "trendScore/" + ne[0] + ".csv";
 
