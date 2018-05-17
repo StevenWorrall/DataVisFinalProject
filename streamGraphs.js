@@ -35,7 +35,7 @@ select.on("change", function() {
 			.key(function(d) { return d.Year; })
 			.entries(d);
 
-			console.log(nested_data);
+// 			console.log(nested_data);
 
 		var trddata2 = nested_data.map(function(d){
 		var obj = {
@@ -58,7 +58,7 @@ select.on("change", function() {
 			.key(function(d) { return d.Year; })
 			.entries(d);
 
-			console.log(nested_data);
+// 			console.log(nested_data);
 
 		var trddata3 = nested_data.map(function(d){
 		var obj = {
@@ -93,7 +93,7 @@ select.on("change", function() {
 			.key(function(d) { return d.year; })
 			.entries(d);
 
-	  console.log(nested_data);
+// 	  console.log(nested_data);
 
 	  var trddata = nested_data.map(function(d){
 	    var obj = {
@@ -126,7 +126,7 @@ select.on("change", function() {
 			.key(function(d) { return d.year; })
 			.entries(d);
 
-	  console.log(nested_data);
+// 	  console.log(nested_data);
 
 	  var trddata = nested_data.map(function(d){
 	    var obj = {
@@ -262,8 +262,7 @@ svg.selectAll("path")
     .data(series)
     .enter().append("path")
     .attr("d", area)
-    .style("fill", function(d,i) { console.log(i); 
-				  return color(i); })
+    .style("fill", function(d,i) { return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
       d3.select("#major").text(d.key);
@@ -510,7 +509,7 @@ svg.selectAll("path")
 })
     .on('mousemove',function(d){
       var xPosition = d3.mouse(this)[0]-50;
-      var yPosition = d3.mouse(this)[1]-50;
+      var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
 //       console.log(xPosition);
       console.log(yPosition);
