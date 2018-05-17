@@ -102,14 +102,14 @@ var lineGraph = function(imgID, num){
 
 	var count = -40;
 
-	for(var i = 0; i < 6; i++){
-		text = newsvg.append('text')
-	    	.attr('x', 140)
-	    	.attr('y', function(data1) {count += 40; return 70+ count; })
-	    	.attr('fill', 'black')
-	    	.attr('font-size', '22px')
-	    	.text(data1[num][i]);
-	}
+// 	for(var i = 0; i < 6; i++){
+// 		text = newsvg.append('text')
+// 	    	.attr('x', 140)
+// 	    	.attr('y', function(data1) {count += 40; return 70+ count; })
+// 	    	.attr('fill', 'black')
+// 	    	.attr('font-size', '22px')
+// 	    	.text(data1[num][i]);
+// 	}
 
 	var g = newsvg.append("g").attr("transform", "translate(500,20)");
 	var parseTime = d3.timeParse("%M/%Y");
