@@ -276,7 +276,7 @@ svg.selectAll("path")
       var xPosition = d3.mouse(this)[0]-25;
       var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
-//       console.log(xPosition);
+      console.log(xPosition);
       console.log(yPosition);
       console.log(d[yPosition].data.month);
       console.log(d[yPosition].data);
