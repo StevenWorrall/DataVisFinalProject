@@ -8,6 +8,10 @@ var formatYear = d3.timeFormat("%B,%Y");
 var keyarray = [];
 var data = ["Reset", "Louis Vuitton", "Gucci", "Honcho", "Humble", "LSD", "Pablo", "Panda", "Raf Simons", "Savage", "Thrift", "Uber", "Versace"];
 
+var div = d3.select("streamGraphs").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
 var select = d3.select("#dropdownmenu")
 select
 .append("select")
