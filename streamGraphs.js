@@ -253,6 +253,7 @@ var svg = d3.select("#streamGraphs").append("svg")
     .attr("id", "TrendGraph")
     .attr("width", width)
     .attr("height", height);
+var keywordtemp; 
 svg.selectAll("path")
     .data(series)
     .enter().append("path")
@@ -261,13 +262,56 @@ svg.selectAll("path")
 				  return color(i); })
     .on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
-  		d3.select("#major").text(d.key);
+      d3.select("#major").text(d.key);
+      div.transition()	
+	.duration(200)
+	.style("opacity", .9);
+      var array = [];
+      array = d.values;
+      console.log(d);
+      keywordtemp = d.key;
+      var xPosition = d3.mouse(this)[0]-50;
+      var yPosition = d3.mouse(this)[1]-50;
+      yPosition = Math.floor(yPosition/4.65116279);
+//       console.log(xPosition);
+      console.log(yPosition);
+      console.log(d[yPosition].data.month);
+      console.log(d[yPosition].data);
+      var temporary = {};
+      temporary = d[yPosition].data;
+      console.log(temporary);
+      console.log(keywordtemp);
+      console.log(temporary[keywordtemp]);
+      div.html(d.key + "<br/>" + formatYear(d[yPosition].data.month) + "<br/>"  + temporary[keywordtemp])	
+        .style("left", (d3.event.pageX) + "px")	
+        .style("top", (d3.event.pageY - 28) + "px");
     })
     .on('mouseout', function(d){      
       d3.select(this).style('fill', 
-         d3.rgb( d3.select(this).style("fill") ).darker());
-         d3.select("#major").text("Mouse over");
+      d3.rgb( d3.select(this).style("fill") ).darker());
+      d3.select("#major").text("Mouse over");
+      div.transition()	
+         .duration(200)
+         .style("opacity", 0);
 })
+    .on('mousemove',function(d){
+      var xPosition = d3.mouse(this)[0]-50;
+      var yPosition = d3.mouse(this)[1]-50;
+      yPosition = Math.floor(yPosition/4.65116279);
+//       console.log(xPosition);
+      console.log(yPosition);
+      console.log(d[yPosition].data.month);
+      console.log(d[yPosition].data);
+      var temporary = {};
+      temporary = d[yPosition].data;
+      console.log(temporary);
+      console.log(keywordtemp);
+      console.log(temporary[keywordtemp]);
+      div.html(d.key + "<br/>" + formatYear(d[yPosition].data.month) + "<br/>"  + temporary[keywordtemp])	
+        .style("left", (d3.event.pageX) + "px")	
+        .style("top", (d3.event.pageY - 28) + "px");
+})
+
 svg.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", 150, 100)
@@ -424,14 +468,58 @@ svg.selectAll("path")
     .attr("d", area)
     .attr("id", "initialGraph")
     .style("fill", function() { return color(Math.random()); })
-    .on('mouseover', function(d){      
+
+	
+.on('mouseover', function(d){      
       d3.select(this).style('fill',d3.rgb( d3.select(this).style("fill") ).brighter());
-  		d3.select("#major").text(d.key);
+      d3.select("#major").text(d.key);
+      div.transition()	
+	.duration(200)
+	.style("opacity", .9);
+      var array = [];
+      array = d.values;
+      console.log(d);
+      keywordtemp = d.key;
+      var xPosition = d3.mouse(this)[0]-50;
+      var yPosition = d3.mouse(this)[1]-50;
+      yPosition = Math.floor(yPosition/4.65116279);
+//       console.log(xPosition);
+      console.log(yPosition);
+      console.log(d[yPosition].data.month);
+      console.log(d[yPosition].data);
+      var temporary = {};
+      temporary = d[yPosition].data;
+      console.log(temporary);
+      console.log(keywordtemp);
+      console.log(temporary[keywordtemp]);
+      div.html(d.key + "<br/>" + formatYear(d[yPosition].data.month) + "<br/>"  + temporary[keywordtemp])	
+        .style("left", (d3.event.pageX) + "px")	
+        .style("top", (d3.event.pageY - 28) + "px");
     })
     .on('mouseout', function(d){      
       d3.select(this).style('fill', 
-         d3.rgb( d3.select(this).style("fill") ).darker());
-         d3.select("#major").text("KEYWORD (Hover over the graph) ");
+      d3.rgb( d3.select(this).style("fill") ).darker());
+      d3.select("#major").text("Mouse over");
+      div.transition()	
+         .duration(200)
+         .style("opacity", 0);
+})
+    .on('mousemove',function(d){
+      var xPosition = d3.mouse(this)[0]-50;
+      var yPosition = d3.mouse(this)[1]-50;
+      yPosition = Math.floor(yPosition/4.65116279);
+//       console.log(xPosition);
+      console.log(yPosition);
+      console.log(d[yPosition].data.month);
+      console.log(d[yPosition].data);
+      var temporary = {};
+      temporary = d[yPosition].data;
+      console.log(temporary);
+      console.log(keywordtemp);
+      console.log(temporary[keywordtemp]);
+      div.html(d.key + "<br/>" + formatYear(d[yPosition].data.month) + "<br/>"  + temporary[keywordtemp])	
+        .style("left", (d3.event.pageX) + "px")	
+        .style("top", (d3.event.pageY - 28) + "px");
 })
 
 svg.append("g")
