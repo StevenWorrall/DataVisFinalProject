@@ -239,7 +239,7 @@ var x = d3.scaleTime()
 	
 var y = d3.scaleLinear()
     .domain([0, d3.max(series, function(layer) { return d3.max(layer, function(d){ return d[0] + d[1]+70;}); })])
-    .range([360, -270]);
+    .range([340, -290]);
 // 	console.log(d)
   
 // setup axis
