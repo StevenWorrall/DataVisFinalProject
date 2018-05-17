@@ -273,8 +273,8 @@ svg.selectAll("path")
       array = d.values;
       console.log(d);
       keywordtemp = d.key;
-      var xPosition = d3.mouse(this)[0]-50;
-      var yPosition = d3.mouse(this)[1]-50;
+      var xPosition = d3.mouse(this)[0]-25;
+      var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
 //       console.log(xPosition);
       console.log(yPosition);
@@ -298,8 +298,8 @@ svg.selectAll("path")
          .style("opacity", 0);
 })
     .on('mousemove',function(d){
-      var xPosition = d3.mouse(this)[0]-50;
-      var yPosition = d3.mouse(this)[1]-50;
+      var xPosition = d3.mouse(this)[0]-25;
+      var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
 //       console.log(xPosition);
       console.log(yPosition);
@@ -483,8 +483,8 @@ svg.selectAll("path")
       array = d.values;
       console.log(d);
       keywordtemp = d.key;
-      var xPosition = d3.mouse(this)[0]-50;
-      var yPosition = d3.mouse(this)[1]-50;
+      var xPosition = d3.mouse(this)[0]-25;
+      var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
 //       console.log(xPosition);
       console.log(yPosition);
@@ -508,7 +508,7 @@ svg.selectAll("path")
          .style("opacity", 0);
 })
     .on('mousemove',function(d){
-      var xPosition = d3.mouse(this)[0]-50;
+      var xPosition = d3.mouse(this)[0]-25;
       var yPosition = d3.mouse(this)[1]-25;
       yPosition = Math.floor(yPosition/4.65116279);
 //       console.log(xPosition);
