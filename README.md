@@ -12,6 +12,7 @@ This project was created by Steven Worrall @stevenworrall and Daiya Masuda @dymz
 
 [You can see the presentation slides here](https://docs.google.com/presentation/d/1qiq-d7RVh9cjQHeB2IoSHwS_qVghqETa_8zNBUDXOTU/edit?usp=sharing).
 
-[You can see the Process Book here](https://docs.google.com/document/d/1PQkc2cWs0REQSdgpNWECLdU_RU4iQXwpZDej8Ko3h_E/edit?usp=sharing).
-[or here](ProcessBook.pdf).
+[You can see the Process Book here (Google Docs)](https://docs.google.com/document/d/1PQkc2cWs0REQSdgpNWECLdU_RU4iQXwpZDej8Ko3h_E/edit?usp=sharing).
+
+[PDF Process Book Here](ProcessBook.pdf).
 
